@@ -54,14 +54,14 @@ public class KeyTypes implements Main.Snippet {
 
     Subject<String, String> subject = PublishSubject.create();
     subject.onNext("a0");
-    writeSequenceToConsole(subject);
+    RxHelp.writeSequenceToConsole(subject);
     subject.onNext("b0");
     subject.onNext("c0");
 
 
     Subject<String, String> replaySubject = ReplaySubject.create();
     replaySubject.onNext("a1");
-    writeSequenceToConsole(replaySubject);
+    RxHelp.writeSequenceToConsole(replaySubject);
     replaySubject.onNext("b1");
     replaySubject.onNext("c1");
 
@@ -72,11 +72,11 @@ public class KeyTypes implements Main.Snippet {
     replayWithBuffer.onNext("b2");
     replayWithBuffer.onNext("c2");
     replayWithBuffer.onNext("d2");
-    writeSequenceToConsole(replayWithBuffer);
+    RxHelp.writeSequenceToConsole(replayWithBuffer);
     replayWithBuffer.onNext("e2");
     replayWithBuffer.onCompleted();
     // This guy will have 2 values received, even though the sequence is closed.
-    writeSequenceToConsole(replayWithBuffer);
+    RxHelp.writeSequenceToConsole(replayWithBuffer);
 
 
     int timeWindow = 20;
@@ -86,19 +86,19 @@ public class KeyTypes implements Main.Snippet {
     waiter(10);
     replayWithTime.onNext("b3");
     waiter(10);
-    writeSequenceToConsole(replayWithTime);
+    RxHelp.writeSequenceToConsole(replayWithTime);
     replayWithTime.onNext("c3");
 
     BehaviorSubject<String> behaviorSubject = BehaviorSubject.create("boom!");
-    writeSequenceToConsole(behaviorSubject);
+    RxHelp.writeSequenceToConsole(behaviorSubject);
     behaviorSubject.onNext("bada boom!");
     behaviorSubject.onCompleted();
-    writeSequenceToConsole(behaviorSubject);
+    RxHelp.writeSequenceToConsole(behaviorSubject);
     behaviorSubject.onNext("Will not be printed, as the sequence was closed.");
 
 
     AsyncSubject<String> asyncSubject = AsyncSubject.create();
-    writeSequenceToConsole(asyncSubject);
+    RxHelp.writeSequenceToConsole(asyncSubject);
     asyncSubject.onNext("This won't ");
     asyncSubject.onNext(" be ");
     asyncSubject.onNext(" written ");
@@ -125,7 +125,4 @@ public class KeyTypes implements Main.Snippet {
     }
   }
 
-  private void writeSequenceToConsole(Observable<String> observable) {
-    observable.subscribe(System.out::println);
-  }
 }
