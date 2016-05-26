@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         // new KeyTypes().run();
-        new LifetimeManagement().run();
+        // new LifetimeManagement().run();
+        new CreatingSequence().run();
     }
 }
