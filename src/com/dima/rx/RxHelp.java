@@ -8,7 +8,7 @@ public class RxHelp {
     return observable.subscribe(System.out::println);
   }
 
-  public static Subscription writeStreamToConsole(Observable<String> observable) {
+  public static Subscription writeStreamToConsole(Observable observable) {
     String name = observable.getClass().getSimpleName() + ":" + observable.hashCode();
     return observable.subscribe(
             s -> System.out.printf("%s value=%s\n", name, s),
