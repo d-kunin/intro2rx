@@ -11,6 +11,7 @@ public class Main {
         // new LifetimeManagement().run();
         // new CreatingSequence().run();
 //        new Generating().run();
-        new Threading().run();
+//        new Threading().run();
+        new RecentItemOnly().run();
     }
 }
