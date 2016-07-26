@@ -75,7 +75,7 @@ public class Threading implements Main.Snippet {
 
     try {
       // take a time
-      Thread.sleep(100000);
+      Thread.sleep(10000);
     } catch (InterruptedException e) {}
   }
 
